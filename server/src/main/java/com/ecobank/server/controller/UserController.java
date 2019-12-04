@@ -18,6 +18,11 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public String greet() {
+        return "Hello World";
+    }
+
 
     @GetMapping(path = "/auth")
     public AuthenticationBean basicAuth() {
