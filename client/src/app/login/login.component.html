@@ -1,34 +1,37 @@
 <div class="example-container form-group m-5 p-5">
-  <p
-  *ngIf="errorMessage !== ''"
-  >
-    {{errorMessage}}
-  </p>
-  <mat-form-field>
-    <input
-    #username
-    matInput
-    placeholder="Username"
-    [type]="text"
-    >
-  </mat-form-field>
 
-  <mat-form-field>
-    <input
-    #password
-    matInput
-    placeholder="Enter your password"
-    [type]="hide ? 'password' : 'text'"
-    >
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-  </mat-form-field>
+  <div class="inner">
+      <p
+      *ngIf="errorMessage !== ''"
+      >
+        {{errorMessage}}
+      </p>
+      <mat-form-field>
+        <input
+        #username
+        matInput
+        placeholder="Username"
+        [type]="text"
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+        #password
+        matInput
+        placeholder="Enter your password"
+        [type]="hide ? 'password' : 'text'"
+        >
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
 
 
-  <button (click)="handleLogin(username.value, password.value); password.value=''" id="login" mat-button>Log In</button>
+      <button (click)="handleLogin(username.value, password.value); password.value=''" id="login" mat-button>Log In</button>
 
 
+  </div>
 
 
 </div>

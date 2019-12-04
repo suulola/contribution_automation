@@ -40,14 +40,16 @@ export class LoginComponent implements OnInit {
          this.errorMessage = '';
             this.authService.authenticationService(username, password)
             .subscribe(
-            data => {
+            async data => {
              if(data["message"] == "success") {
               this.authService.setLoginState(true);
               sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-               this.router.navigate(["dashboard"])
                // using window.location.reload() should be the ideal method
                // search for the ideal method
-               window.location.reload()
+              // await window.location.reload()
+              this.router.navigate(["dashboard"])
+
+
              }else {
                window.alert(data["message"])
              }

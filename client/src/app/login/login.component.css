@@ -1,13 +1,24 @@
 .example-container {
   height: 70vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  max-width: 300px;
+  width: 90%;
+  height: 70vh;
+  border-radius: 2%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.example-container > * {
-  width: 50%;
+.inner > * {
+  width: 60%;
 }
 
 .example-right-align {
