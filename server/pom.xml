@@ -59,7 +59,7 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <!--jUnit added here in order to access static methods in jUnit like assertEquals which is surprisingly not bundled with the one above-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
