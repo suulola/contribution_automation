@@ -1,3 +1,4 @@
+import { NavbarComponent } from './../navbar/navbar.component';
 import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,14 +23,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
-
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
   }
 
-  handleLogin(username, password) : void {
+ handleLogin(username, password) : void {
 
     try {
       if(username.trim() == '') {
@@ -38,11 +38,19 @@ export class LoginComponent implements OnInit {
          this.errorMessage = "Input a valid password";
        }else {
          this.errorMessage = '';
-            this.authService.authenticationService(username, password).subscribe(
-           result => {
-             console.log(result)
-             console.log("result gotten successfully")
-             sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
+            this.authService.authenticationService(username, password)
+            .subscribe(
+            data => {
+             if(data["message"] == "success") {
+              this.authService.setLoginState(true);
+              sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
+               this.router.navigate(["dashboard"])
+               // using window.location.reload() should be the ideal method
+               // search for the ideal method
+               window.location.reload()
+             }else {
+               window.alert(data["message"])
+             }
             }
          )
        }

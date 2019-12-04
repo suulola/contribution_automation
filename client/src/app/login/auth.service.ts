@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, tap, catchError} from 'rxjs/operators'
@@ -7,8 +8,12 @@ import {map, tap, catchError} from 'rxjs/operators'
 export class AuthService  {
 
   USER_NAME_SESSION_ATTRIBUTE_NAME = "authenticatedUser";
+  private isLoggedIn :boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
 
 
 
@@ -26,11 +31,23 @@ export class AuthService  {
 
   handleLogout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    this.setLoginState(false)
+    this.router.navigate([""])
+
   }
 
   isUserLoggedIn(): boolean {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    return user === null ? false : true;
+    user !== null ? this.isLoggedIn = true : null;
+    return this.isLoggedIn;
+  }
+
+  setLoginState(value: boolean): void {
+    this.isLoggedIn = value;
+  }
+
+  getLoginState(): boolean {
+    return this.isLoggedIn;
   }
 
 

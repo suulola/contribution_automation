@@ -1,1 +1,18 @@
-<p>navbar works!</p>
+<div  class="d-flex justify-content-end mt-3 mr-3">
+  <button *ngIf="!isLoggedIn" mat-button routerLink="/">Login</button>
+
+
+<button *ngIf="isLoggedIn" mat-button routerLink="/dashboard" >Dashboard</button>
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu">Others</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item routerLink="/abc" >About</button>
+  <button *ngIf="isLoggedIn" (click)="logout()" mat-menu-item>Logout</button>
+</mat-menu>
+
+<!-- <div *ngIf="isLoggedIn"  >
+  Hello world
+
+</div> -->
+</div>
