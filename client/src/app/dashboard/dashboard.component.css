@@ -1,0 +1,14 @@
+table {
+  min-width: 400px;
+  width: 100%;
+}
+
+#table {
+  height: 50vh;
+  overflow: auto;
+}
+
+#add {
+  position: absolute;
+  float: left;
+}

@@ -3,9 +3,16 @@
 
 
 <button *ngIf="isLoggedIn" mat-button routerLink="/dashboard" >Dashboard</button>
+<button *ngIf="isLoggedIn" mat-button routerLink="/history" >History</button>
 
+<button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="beforeMenu">Add New</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item>User</button>
+  <button mat-menu-item>Contribution Plan</button>
+</mat-menu>
 
-<button mat-button [matMenuTriggerFor]="afterMenu">Others</button>
+<button mat-button [matMenuTriggerFor]="afterMenu">
+    <mat-icon>person</mat-icon></button>
 <mat-menu #afterMenu="matMenu" xPosition="after">
   <button mat-menu-item routerLink="/abc" >About</button>
   <button *ngIf="isLoggedIn" (click)="logout()" mat-menu-item>Logout</button>
@@ -14,5 +21,9 @@
 <!-- <div *ngIf="isLoggedIn"  >
   Hello world
 
+c
+
 </div> -->
+
+
 </div>
