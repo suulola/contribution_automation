@@ -36,7 +36,8 @@ import { AuthGuard } from './auth.guard';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      {path: "", component: LoginComponent},
+      {path: "login", component: LoginComponent},
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       // {
       //   path: "dashboard",
       //   component: DashboardComponent,
