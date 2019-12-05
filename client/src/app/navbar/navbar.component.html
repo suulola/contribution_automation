@@ -5,25 +5,19 @@
 <button *ngIf="isLoggedIn" mat-button routerLink="/dashboard" >Dashboard</button>
 <button *ngIf="isLoggedIn" mat-button routerLink="/history" >History</button>
 
-<button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="beforeMenu">Add New</button>
+<!-- <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="beforeMenu">Add New</button>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
   <button mat-menu-item>User</button>
-  <button mat-menu-item>Contribution Plan</button>
-</mat-menu>
+  <button mat-menu-item></button>
+</mat-menu> -->
 
-<button mat-button [matMenuTriggerFor]="afterMenu">
+<button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="afterMenu">
     <mat-icon>person</mat-icon></button>
 <mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item routerLink="/abc" >About</button>
+  <button mat-menu-item routerLink="/abc" >Add New Contribution Plan</button>
   <button *ngIf="isLoggedIn" (click)="logout()" mat-menu-item>Logout</button>
 </mat-menu>
 
-<!-- <div *ngIf="isLoggedIn"  >
-  Hello world
-
-c
-
-</div> -->
 
 
 </div>

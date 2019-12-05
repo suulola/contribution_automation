@@ -13,16 +13,16 @@ export interface PeriodicElement {
 
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {no: 1, name: 'Maxwell', team: "Cognitive",  count: 1},
-  {no: 2, name: 'Rach', team: "Cognitive",  count: 1},
-  {no: 3, name: 'Luth', team: "Cognitive", count: 1},
-  {no: 4, name: 'Lola', team: "Cognitive",  count: 1},
-  {no: 5, name: 'Boron', team: "Cognitive",  count: 1},
-  {no: 6, name: 'Tola', team: "Cognitive", count: 1},
-  {no: 7, name: 'Ola', team: "Cognitive", count: 1},
-  {no: 8, name: 'Bola', team: "Cognitive", count: 1},
-  {no: 9, name: 'Fluorine', team: "Cognitive", count: 1},
-  {no: 10, name: 'Neon', team: "Cognitive", count: 1},
+  {no: 1, name: 'John Doe', team: "Cognitive",  count: 1},
+  {no: 2, name: 'John Doe', team: "Integration",  count: 1},
+  {no: 3, name: 'John Doe', team: "Cognitive", count: 1},
+  {no: 4, name: 'John Doe', team: "PLSQL",  count: 1},
+  {no: 5, name: 'John Doe', team: "Cognitive",  count: 1},
+  {no: 6, name: 'John Doe', team: "PLSQL", count: 1},
+  {no: 7, name: 'John Doe', team: "Cognitive", count: 1},
+  {no: 8, name: 'Doe Mary', team: "PLSQL", count: 1},
+  {no: 9, name: 'John Doe', team: "Cognitive", count: 1},
+  {no: 10, name: 'John Doe', team: "Integration", count: 1},
 ];
 
 

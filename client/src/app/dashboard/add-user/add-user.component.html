@@ -1,11 +1,45 @@
-<h1 mat-dialog-title>Hi there</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <!-- <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field> -->
+<h1 mat-dialog-title>Add New User</h1>
+<div id="addUserForm" mat-dialog-content>
+    <mat-form-field>
+        <input
+        #fullName
+        matInput
+        placeholder="Full Name"
+        [type]="text"
+        >
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input
+        #password
+        matInput
+        placeholder="Team"
+        [type]="text"
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+          <input
+          #password
+          matInput
+          placeholder="Email Address"
+          [type]="text"
+          >
+        </mat-form-field>
+
+        <mat-form-field>
+            <input
+            #password
+            matInput
+            placeholder="Phone Number"
+            [type]="text"
+            >
+          </mat-form-field>
+
+
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+  <button class="" mat-raised-button (click)="onNoClick()">Submit</button>
+  <button class="text-danger" mat-button (click)="onNoClick()">Close</button>
 </div>
