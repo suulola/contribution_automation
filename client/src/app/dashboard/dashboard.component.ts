@@ -1,28 +1,42 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { AddUserComponent } from './add-user/add-user.component';
 
-export interface PeriodicElement {
+export interface User {
   name: string;
   no: number;
   team: string;
   count: number;
+  email: string;
 }
 
+//export interface User {
+//   name: string;
+//   team: string;
+//   level: string;
+//   account_number: number;
+//   phone_number: string;
+//   email: string;
+//   //
+//   contributions: any;
+//   no: number;
+//   count: number;
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {no: 1, name: 'John Doe', team: "Cognitive",  count: 1},
-  {no: 2, name: 'John Doe', team: "Integration",  count: 1},
-  {no: 3, name: 'John Doe', team: "Cognitive", count: 1},
-  {no: 4, name: 'John Doe', team: "PLSQL",  count: 1},
-  {no: 5, name: 'John Doe', team: "Cognitive",  count: 1},
-  {no: 6, name: 'John Doe', team: "PLSQL", count: 1},
-  {no: 7, name: 'John Doe', team: "Cognitive", count: 1},
-  {no: 8, name: 'Doe Mary', team: "PLSQL", count: 1},
-  {no: 9, name: 'John Doe', team: "Cognitive", count: 1},
-  {no: 10, name: 'John Doe', team: "Integration", count: 1},
+
+const User_Array: User[] = [
+  {no: 1, name: 'John Doe', team: "Cognitive",  count: 1, email: 'name@ecobank.com'},
+  {no: 2, name: 'John Doe', team: "Integration",  count: 1, email: 'name@ecobank.com'},
+  {no: 3, name: 'John Doe', team: "Cognitive", count: 1, email: 'name@ecobank.com'},
+  {no: 4, name: 'John Doe', team: "PLSQL",  count: 1, email: 'name@ecobank.com'},
+  {no: 5, name: 'John Doe', team: "Cognitive",  count: 1, email: 'name@ecobank.com'},
+  {no: 6, name: 'John Doe', team: "PLSQL", count: 1, email: 'name@ecobank.com'},
+  {no: 7, name: 'John Doe', team: "Cognitive", count: 1, email: 'name@ecobank.com'},
+  {no: 8, name: 'Doe Mary', team: "PLSQL", count: 1, email: 'name@ecobank.com'},
+  {no: 9, name: 'John Doe', team: "Cognitive", count: 1, email: 'name@ecobank.com'},
+  {no: 10, name: 'John Doe', team: "Integration", count: 1, email: 'name@ecobank.com'},
 ];
 
 
@@ -38,9 +52,9 @@ export class DashboardComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
-  displayedColumns: string[] = ['select', 'no', 'name', 'team', 'count'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  displayedColumns: string[] = ['select', 'no', 'name', 'team', 'count', 'email'];
+  dataSource = new MatTableDataSource<User>(User_Array);
+  selection = new SelectionModel<User>(true, []);
 
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -65,7 +79,7 @@ export class DashboardComponent implements OnInit {
   }
 
     /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: PeriodicElement): string {
+    checkboxLabel(row?: User): string {
       if (!row) {
         return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
       }
@@ -78,20 +92,8 @@ export class DashboardComponent implements OnInit {
     }
 
     // opens dialog
-    openDialog(): void {
-      console.log("hi")
+    openAddUserDialog(): void {
       this.dialog.open(AddUserComponent);
-
-      // dialogRef.afterOpen().subscribe(result => {
-      //   console.log("hello there")
-      // })
-
-
-
-      // dialogRef.afterClosed().subscribe(result => {
-      //   console.log('The dialog was closed');
-      //   this.animal = result;
-      // });
     }
 
 }

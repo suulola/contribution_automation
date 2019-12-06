@@ -12,6 +12,13 @@ export class AddUserComponent implements OnInit {
     public dialogRef: MatDialogRef<AddUserComponent>,
   ) { }
 
+  submit(): void {
+    this.dialogRef.close()
+  }
+  close(): void {
+    this.dialogRef.close()
+  }
+
   ngOnInit() {
   }
 

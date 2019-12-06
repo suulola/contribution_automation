@@ -9,7 +9,6 @@
         >
       </mat-form-field>
 
-
       <mat-form-field>
         <input
         #password
@@ -21,25 +20,41 @@
 
       <mat-form-field>
           <input
-          #password
+          #level
           matInput
-          placeholder="Email Address"
+          placeholder="Level"
           [type]="text"
           >
         </mat-form-field>
 
         <mat-form-field>
             <input
-            #password
+            #account_number
+            matInput
+            placeholder="Account Number"
+            [type]="number"
+            >
+          </mat-form-field>
+
+        <mat-form-field>
+            <input
+            #phoneNumber
             matInput
             placeholder="Phone Number"
             [type]="text"
             >
           </mat-form-field>
 
-
+          <mat-form-field>
+              <input
+              #email
+              matInput
+              placeholder="Email Address"
+              [type]="email"
+              >
+            </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button class="" mat-raised-button (click)="onNoClick()">Submit</button>
-  <button class="text-danger" mat-button (click)="onNoClick()">Close</button>
+  <button class="" mat-raised-button (click)="submit()">Submit</button>
+  <button class="text-danger" mat-button (click)="close()">Close</button>
 </div>

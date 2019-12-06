@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './../page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HistoryComponent } from './history/history.component';
 import {
   MatInputModule,
   MatTableModule,
@@ -14,8 +13,11 @@ import {
   MatDialogModule,
   MatIconModule,
   MatButtonModule,
+  MatCardModule
  } from '@angular/material';
 import { AddUserComponent } from './add-user/add-user.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { AddContributionComponent } from './transaction/add-contribution/add-contribution.component';
 
 
 export const dashboardRoutes: Routes = [
@@ -41,8 +43,8 @@ export const dashboardRoutes: Routes = [
 // ]
   },
   {
-    path: 'history',
-    component: HistoryComponent,
+    path: 'transaction',
+    component: TransactionComponent,
     canActivate: [AuthGuard]
   }
 ]
@@ -51,8 +53,9 @@ export const dashboardRoutes: Routes = [
 @NgModule({
   declarations: [
     DashboardComponent,
-    HistoryComponent,
-    AddUserComponent
+    AddUserComponent,
+    TransactionComponent,
+    AddContributionComponent
   ],
   imports: [
     CommonModule,
@@ -65,8 +68,9 @@ export const dashboardRoutes: Routes = [
     MatIconModule,
     //
     MatButtonModule,
+    MatCardModule,
     RouterModule.forChild(dashboardRoutes)
   ],
-  entryComponents: [AddUserComponent]
+  entryComponents: [AddUserComponent, AddContributionComponent]
 })
 export class DashboardModule { }

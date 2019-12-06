@@ -1,82 +1,93 @@
-
 <div id="dashboard">
   <div class="container-fluid">
     <div class="row">
       <div class="offset-1 col-md-7">
-        <h1 class="text-primary">Welcome Admin</h1>
+        <h3 class="text-primary my-2">Dashboard</h3>
 
         <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-          </mat-form-field>
+          <input
+            matInput
+            (keyup)="applyFilter($event.target.value)"
+            placeholder="Filter"
+          />
+        </mat-form-field>
 
-          <div id="table">
-              <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <div id="table">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                  [aria-label]="checkboxLabel()"
+                >
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(row) : null"
+                  [aria-label]="checkboxLabel(row)"
+                >
+                </mat-checkbox>
+              </td>
+            </ng-container>
 
-                  <!-- Checkbox Column -->
-                  <ng-container matColumnDef="select">
-                    <th mat-header-cell *matHeaderCellDef>
-                      <mat-checkbox (change)="$event ? masterToggle() : null"
-                                    [checked]="selection.hasValue() && isAllSelected()"
-                                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                                    [aria-label]="checkboxLabel()">
-                      </mat-checkbox>
-                    </th>
-                    <td mat-cell *matCellDef="let row">
-                      <mat-checkbox (click)="$event.stopPropagation()"
-                                    (change)="$event ? selection.toggle(row) : null"
-                                    [checked]="selection.isSelected(row)"
-                                    [aria-label]="checkboxLabel(row)">
-                      </mat-checkbox>
-                    </td>
-                  </ng-container>
+            <!-- Position Column -->
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef>No.</th>
+              <td class="text-center text-capitalize" mat-cell *matCellDef="let element">{{ element.no }}</td>
+            </ng-container>
 
-                  <!-- Position Column -->
-                  <ng-container matColumnDef="no">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.no}} </td>
-                  </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td class="text-center text-capitalize" mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
 
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                  </ng-container>
+            <!-- Team Column -->
+            <ng-container matColumnDef="team">
+              <th mat-header-cell *matHeaderCellDef>Team</th>
+              <td class="text-center text-capitalize" mat-cell *matCellDef="let element">{{ element.team }}</td>
+            </ng-container>
 
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="team">
-                    <th mat-header-cell *matHeaderCellDef> Team </th>
-                    <td mat-cell *matCellDef="let element"> {{element.team}} </td>
-                  </ng-container>
+            <!-- Contribution Count Column -->
+            <ng-container matColumnDef="count">
+              <th mat-header-cell *matHeaderCellDef>Contributions</th>
+              <td class="text-center text-capitalize" mat-cell *matCellDef="let element">{{ element.count }}</td>
+            </ng-container>
 
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="count">
-                    <th mat-header-cell *matHeaderCellDef> Contributions </th>
-                    <td mat-cell *matCellDef="let element"> {{element.count}} </td>
-                  </ng-container>
-
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-                      (click)="selection.toggle(row)">
-                  </tr>
-                </table>
-          </div>
-
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            <!-- Contribution Count Column -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email Address</th>
+                <td class="text-center " mat-cell *matCellDef="let element">{{ element.email }}</td>
+              </ng-container>
 
 
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns"
+              (click)="selection.toggle(row)"
+            ></tr>
+          </table>
+        </div>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+        ></mat-paginator>
       </div>
-      <div class="col-md-4 d-none d-md-block">hi</div>
-
-
-
-
-
-
-
+      <div class="col-md-4 d-none d-md-block">
+        <div class="py-5 pl-4 my-5">
+          <div class="border border-dark p-4">
+            <p class="lead">Notification</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <button
-    class="float-right"
-    (click)="openDialog()"
-    mat-fab>+</button>
+    <button class="float-right" (click)="openAddUserDialog()" mat-fab>+</button>
   </div>
 </div>

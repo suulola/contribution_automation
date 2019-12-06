@@ -38,12 +38,8 @@ import { AuthGuard } from './auth.guard';
     RouterModule.forRoot([
       {path: "login", component: LoginComponent},
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      // {
-      //   path: "dashboard",
-      //   component: DashboardComponent,
-      //   canActivate: [AuthGuard]
-      // },
-      {path: "abc", component: PageNotFoundComponent},
+      {path: "404", component: PageNotFoundComponent},
+      {path: "**", redirectTo: '404'}
     ]),
     DashboardModule,
     BrowserAnimationsModule,
