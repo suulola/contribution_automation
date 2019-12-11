@@ -5,12 +5,6 @@
 <button *ngIf="isLoggedIn" mat-button routerLink="/dashboard" >Dashboard</button>
 <button *ngIf="isLoggedIn" mat-button routerLink="/transaction" >Transaction</button>
 
-<!-- <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="beforeMenu">Add New</button>
-<mat-menu #beforeMenu="matMenu" xPosition="before">
-  <button mat-menu-item>User</button>
-  <button mat-menu-item></button>
-</mat-menu> -->
-
 <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="afterMenu">
     <mat-icon>person</mat-icon></button>
 <mat-menu #afterMenu="matMenu" xPosition="after">
