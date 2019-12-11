@@ -2,13 +2,16 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map, tap, catchError} from 'rxjs/operators'
+import { BehaviorSubject } from 'rxjs';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService  {
 
   USER_NAME_SESSION_ATTRIBUTE_NAME = "authenticatedUser";
-  private isLoggedIn :boolean = false;
+  private isLoggedIn = new BehaviorSubject(false);
 
   constructor(
     private http: HttpClient,
@@ -36,17 +39,17 @@ export class AuthService  {
 
   }
 
-  isUserLoggedIn(): boolean {
+  isUserLoggedIn() {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     user !== null ? this.isLoggedIn = true : null;
     return this.isLoggedIn;
   }
 
-  setLoginState(value: boolean): void {
+  public setLoginState(value: boolean) {
     this.isLoggedIn = value;
   }
 
-  getLoginState(): boolean {
+  public get getLoginState() {
     return this.isLoggedIn;
   }
 
